@@ -22,4 +22,30 @@
     ```
 - Deploy Demonset `notrootsquash.yaml`
 - Deploy the actual db `db2ucluster-instance.yaml` this should take around 15 min
-- 
+    > Note!
+    > Validate by doing the following:
+        ```bash
+        oc get db2ucluster db2ucluster-cp4ba -n db2
+        ``` 
+### Configuring Ldap
+- New namesapce `namespace-openldap.yaml`
+- Apply CRB `openldap-anyuid.yaml`
+- we need to script the helm / k8's job for `helm`. 
+
+### last steps:
+
+```bash
+    catalogsource.operators.coreos.com/ibm-cp4a-operator-catalog created
+    catalogsource.operators.coreos.com/ibm-cp-automation-foundation-catalog created
+    catalogsource.operators.coreos.com/ibm-automation-foundation-core-catalog created
+    catalogsource.operators.coreos.com/opencloud-operators created
+    catalogsource.operators.coreos.com/bts-operator created
+    catalogsource.operators.coreos.com/cloud-native-postgresql-catalog created
+    IBM Operator Catalog source created!
+    Waiting for CP4A Operator Catalog pod initialization
+    Waiting for CP4A Operator Catalog pod initialization
+    CP4BA Operator Catalog is running ibm-cp4a-operator-catalog-g2h62                                   1/1   Running     0     31s
+    operatorgroup.operators.coreos.com/ibm-cp4a-operator-catalog-group created
+    CP4BA Operator Group Created!
+    subscription.operators.coreos.com/ibm-cp4a-operator-catalog-subscription created #NOT FOUND
+```
