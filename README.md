@@ -46,7 +46,13 @@ mv cloudctl-darwin-amd64 $HOME/bin/cloudctl || sudo mv cloudctl-darwin-amd64 $HO
 - we need to script the helm / k8's job for `helm`. 
 
 ### CP4A:
-- Namespaces for cp4a and common-services with ibm-entitlment-key
+    ```bash
+        oc create secret docker-registry cpregistrysecret -n cp4ba \
+    --docker-server=cp.icr.io/cp/cpd \
+    --docker-username=cp \
+    --docker-password=$IBM_ENTITLEMENT_KEY 
+
+    ```
 - catalog_source
 - ibm-common-services "ibm-catalogs"
 - operator group
