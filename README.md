@@ -55,7 +55,10 @@
     ```bash
     mkdir -p ${OFFLINEDIR}
     ```
-
+- Download the `CASE` file:
+    ```bash
+    cloudctl case save --repo ${CASE_REPO_PATH} --case ${CASE_NAME} --version ${CASE_VERSION} --outputdir ${OFFLINEDIR}
+    ```
 - Add catalog source, `ibm-db2uoperator-catalog`
 - Create operator group `db2-opeartorgroup.yaml`
 - Deploy db2 operator `db2-sub.yaml`
