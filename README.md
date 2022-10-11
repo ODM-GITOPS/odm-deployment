@@ -51,6 +51,11 @@
     export CASE_VERSION=4.5.0
     export OFFLINEDIR=~/offline/db2/${CASE_VERSION}
     ```
+- If you haven't yet created the directory, do so now:
+    ```bash
+    mkdir -p ${OFFLINEDIR}
+    ```
+
 - Add catalog source, `ibm-db2uoperator-catalog`
 - Create operator group `db2-opeartorgroup.yaml`
 - Deploy db2 operator `db2-sub.yaml`
