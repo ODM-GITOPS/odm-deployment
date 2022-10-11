@@ -75,15 +75,11 @@
     - argocd/operators/ibm-db2u-operator.yaml
     - argocd/operators/ibm-catalogs.yaml
     - argocd/instances/sealed-secrets.yaml
+    - argocd/operators/ibm-foundations.yaml
+    - argocd/instances/ibm-foundational-services-instance.yaml
+    - argocd/operators/ibm-automation-foundation-core-operator.yaml
     ```
 
-
-
-
-
-
-
-- Add catalog source, `ibm-db2uoperator-catalog`
 - Create operator group `db2-opeartorgroup.yaml`
 - Deploy db2 operator `db2-sub.yaml`
 - SCC for db2 `db2-scc.yaml`
