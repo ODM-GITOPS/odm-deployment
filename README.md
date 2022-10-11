@@ -32,20 +32,17 @@
 - Apply CRB `openldap-anyuid.yaml`
 - we need to script the helm / k8's job for `helm`. 
 
-### last steps:
-
-```bash
-    catalogsource.operators.coreos.com/ibm-cp4a-operator-catalog created
-    catalogsource.operators.coreos.com/ibm-cp-automation-foundation-catalog created
-    catalogsource.operators.coreos.com/ibm-automation-foundation-core-catalog created
-    catalogsource.operators.coreos.com/opencloud-operators created
-    catalogsource.operators.coreos.com/bts-operator created
-    catalogsource.operators.coreos.com/cloud-native-postgresql-catalog created
-    IBM Operator Catalog source created!
-    Waiting for CP4A Operator Catalog pod initialization
-    Waiting for CP4A Operator Catalog pod initialization
-    CP4BA Operator Catalog is running ibm-cp4a-operator-catalog-g2h62                                   1/1   Running     0     31s
-    operatorgroup.operators.coreos.com/ibm-cp4a-operator-catalog-group created
-    CP4BA Operator Group Created!
-    subscription.operators.coreos.com/ibm-cp4a-operator-catalog-subscription created #NOT FOUND
-```
+### CP4A:
+- Namespaces for cp4a and common-services with ibm-entitlment-key
+- catalog_source
+- ibm-common-services "ibm-catalogs"
+- operator group
+- common-services-operator-group
+- sub
+- ldap
+### odms:
+- ibm-ban-secret
+- odm-db-secret
+- oc get secret -n cp4ba --sort-by='.metadata.creationTimestamp'
+- on icp4adeploy spec change the version to 21.0.1
+- icp4adeploy instance
