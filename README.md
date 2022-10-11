@@ -82,8 +82,16 @@
     ```
 
 - Create operator group `db2-opeartorgroup.yaml`
+- Give the service account privileged security content constraints (SCC) by running the following command:
+    ```bash
+    oc adm policy add-scc-to-user privileged system:serviceaccount:kube-system:norootsquash
+    ```
 - Deploy db2 operator `db2-sub.yaml`
 - SCC for db2 `db2-scc.yaml`
+- Validate by running this command:
+    ```bash
+    oc get db2ucluster db2ucluster-cp4ba -n db2
+    ```
 - Add the IBM entitlment key to namespace `kube-system`
 
     ```bash
