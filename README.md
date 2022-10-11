@@ -24,6 +24,7 @@
         - argocd/serviceaccounts-tools.yaml
         - argocd/serviceaccounts-db2.yaml
         - argocd/serviceaccounts-cp4ba.yaml
+        - argocd/serviceaccounts-norootsquash.yaml
     ```
 1. Set Storage Classes 
     ```bash
