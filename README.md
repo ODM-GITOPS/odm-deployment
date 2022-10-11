@@ -59,6 +59,15 @@
     ```bash
     cloudctl case save --repo ${CASE_REPO_PATH} --case ${CASE_NAME} --version ${CASE_VERSION} --outputdir ${OFFLINEDIR}
     ```
+- Extract the `CASE` bundle:
+    ```bash
+    cd ${OFFLINEDIR}
+    tar -xvzf ${CASE_NAME}-${CASE_VERSION}.tgz
+    ```
+- Install the `Db2` catalog:
+    ```bash
+    cloudctl case launch --case ${CASE_NAME} --namespace openshift-marketplace --inventory db2uOperatorSetup --action installCatalog --tolerance 1
+    ```
 - Add catalog source, `ibm-db2uoperator-catalog`
 - Create operator group `db2-opeartorgroup.yaml`
 - Deploy db2 operator `db2-sub.yaml`
