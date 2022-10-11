@@ -25,16 +25,16 @@
         - argocd/serviceaccounts-db2.yaml
         - argocd/serviceaccounts-cp4ba.yaml
     ```
-- Deploying the namespaces db2, kube-system, cp4ba
 - Set Storage Classes 
-```bash
-export CP_FILE_STORAGE=ibmc-file-gold-gid
-export CP_BLOCK_STORAGE=ibmc-block-gold
-``` 
-[Your Entitlement Key](https://myibm.ibm.com/products-services/containerlibrar)
-```bash
-export IBM_ENTITLEMENT_KEY=<your entitlement key>
-```
+    ```bash
+    export CP_FILE_STORAGE=ibmc-file-gold-gid
+    export CP_BLOCK_STORAGE=ibmc-block-gold
+    ``` 
+- Adding your [Your Entitlement Key](https://myibm.ibm.com/products-services/containerlibrar)
+
+    ```bash
+    export IBM_ENTITLEMENT_KEY=<your entitlement key>
+    ```
 
 
 - Create IBM Entitlment Key secret in `db2`, `kube-system` & `cp4ba` namespaces 
