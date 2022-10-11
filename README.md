@@ -44,7 +44,7 @@
 
     ```
 1. Create the catalog source
-- You will need to get the value for CASE_VERSION by looking up the CASE version of latest Db2 Operator.
+- You will need to get the value for `CASE_VERSION` by looking up the [CASE version of latest Db2 Operator](https://www.ibm.com/docs/en/db2/11.5?topic=deployments-db2-red-hat-openshift#concept_bq1_v4r_hlb__case-version).
     ```bash
     export CASE_REPO_PATH=https://github.com/IBM/cloud-pak/raw/master/repo/case
     export CASE_NAME=ibm-db2uoperator
