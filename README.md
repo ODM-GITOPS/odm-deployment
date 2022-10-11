@@ -11,10 +11,13 @@ mv cloudctl-darwin-amd64 $HOME/bin/cloudctl || sudo mv cloudctl-darwin-amd64 $HO
 - Deploying the namespace 
 - add the IBM entitlment key in DB2 namespace 
     ```bash
+    export IBM_ENTITLEMENT_KEY=[Access your container sofware Entitlement key](https://myibm.ibm.com/products-services/containerlibrary)
+    ```
+    ```bash
     oc create secret docker-registry ibm-entitlement-key -n db2 \
     --docker-server=cp.icr.io \
     --docker-username=cp \
-    --docker-password=<IBM_ENTITLEMENT_KEY_REPLACE> 
+    --docker-password=$IBM_ENTITLEMENT_KEY 
 
     ```
 - Add catalog source, `ibm-db2uoperator-catalog`
@@ -27,7 +30,7 @@ mv cloudctl-darwin-amd64 $HOME/bin/cloudctl || sudo mv cloudctl-darwin-amd64 $HO
         oc create secret docker-registry cpregistrysecret -n kube-system \
     --docker-server=cp.icr.io/cp/cpd \
     --docker-username=cp \
-    --docker-password=<IBM_ENTITLEMENT_KEY_REPLACE> 
+    --docker-password=$IBM_ENTITLEMENT_KEY 
 
     ```
 - Deploy Demonset `notrootsquash.yaml`
