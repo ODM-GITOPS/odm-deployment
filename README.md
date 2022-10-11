@@ -68,6 +68,21 @@
     ```bash
     cloudctl case launch --case ${CASE_NAME} --namespace openshift-marketplace --inventory db2uOperatorSetup --action installCatalog --tolerance 1
     ```
+### Services - Kustomization.yaml
+
+1. Edit the Services layer `${GITOPS_PROFILE}/2-services/kustomization.yaml` uncomment the following:
+    ```yaml
+    - argocd/operators/ibm-db2u-operator.yaml
+    - argocd/operators/ibm-catalogs.yaml
+    - argocd/instances/sealed-secrets.yaml
+    ```
+
+
+
+
+
+
+
 - Add catalog source, `ibm-db2uoperator-catalog`
 - Create operator group `db2-opeartorgroup.yaml`
 - Deploy db2 operator `db2-sub.yaml`
