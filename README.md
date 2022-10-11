@@ -25,19 +25,17 @@
         - argocd/serviceaccounts-db2.yaml
         - argocd/serviceaccounts-cp4ba.yaml
     ```
-- Set Storage Classes 
+1. Set Storage Classes 
     ```bash
     export CP_FILE_STORAGE=ibmc-file-gold-gid
     export CP_BLOCK_STORAGE=ibmc-block-gold
     ``` 
-- Adding your [Your Entitlement Key](https://myibm.ibm.com/products-services/containerlibrar)
+1. Adding your [Your Entitlement Key](https://myibm.ibm.com/products-services/containerlibrar)
 
     ```bash
     export IBM_ENTITLEMENT_KEY=<your entitlement key>
     ```
-
-
-- Create IBM Entitlment Key secret in `db2`, `kube-system` & `cp4ba` namespaces 
+1. Create IBM Entitlment Key secret in `db2`, `kube-system` & `cp4ba` namespaces 
     ```bash
     oc create secret docker-registry ibm-entitlement-key -n <NAMESPACE> \
     --docker-server=cp.icr.io \
