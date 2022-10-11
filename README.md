@@ -13,12 +13,17 @@
 ### Infrastructure - Kustomization.yaml
 1. Edit the Infrastructure layer `${GITOPS_PROFILE}/1-infra/kustomization.yaml` and un-comment the following:
     ```yaml
-    - argocd/consolenotification.yaml
-    - argocd/namespace-ibm-common-services.yaml
-    - argocd/namespace-db2.yaml
-    - argocd/namespace-cp4ba.yaml
-    - argocd/namespace-kube-system.yaml
-    - argocd/namespace-sealed-secrets.yaml
+        - argocd/consolenotification.yaml
+        - argocd/namespace-ibm-common-services.yaml
+        - argocd/namespace-sealed-secrets.yaml
+        - argocd/namespace-tools.yaml
+        - argocd/namespace-db2.yaml
+        - argocd/namespace-cp4ba.yaml
+        - argocd/namespace-kube-system.yaml
+        - argocd/serviceaccounts-ibm-common-services.yaml
+        - argocd/serviceaccounts-tools.yaml
+        - argocd/serviceaccounts-db2.yaml
+        - argocd/serviceaccounts-cp4ba.yaml
     ```
 - Deploying the namespaces db2, kube-system, cp4ba
 - Set Storage Classes 
