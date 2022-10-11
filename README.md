@@ -1,6 +1,6 @@
 # Deploy CP4BA - [ODM](https://www.ibm.com/products/operational-decision-manager?utm_content=SRCWW&p1=Search&p4=43700064670126812&p5=p&gclid=CjwKCAjwqJSaBhBUEiwAg5W9p_oekz-evt442nYbrYWGB6ouLhun87jWI4P7lbKOUoPAyx_5H5rSJhoCx7UQAvD_BwE&gclsrc=aw.ds)
 ## Prerequisites 
-- Install cloudctl
+- Install `cloudctl`
     ```bash
     curl -L https://github.com/IBM/cloud-pak-cli/releases/latest/download/cloudctl-darwin-amd64.tar.gz -o cloudctl-darwin-amd64.tar.gz || curl -L https://github.com/IBM/cloud-pak-cli/releases/latest/download/cloudctl-darwin-amd64.tar.gz -o cloudctl-darwin-amd64.tar.gz
     ```
