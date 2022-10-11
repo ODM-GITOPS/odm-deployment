@@ -8,13 +8,20 @@ tar -zxvf cloudctl-darwin-amd64.tar.gz || sudo -zxvf cloudctl-darwin-amd64.tar.g
 ```bash
 mv cloudctl-darwin-amd64 $HOME/bin/cloudctl || sudo mv cloudctl-darwin-amd64 $HOME/bin/cloudctl 
 ```
-- Deploying the namespace 
-- add the IBM entitlment key in DB2 namespace 
+- Deploying the namespaces db2, kube-system, cp4ba
+- Set Storage Classes 
+```bash
+export CP_FILE_STORAGE=ibmc-file-gold-gid
+export CP_BLOCK_STORAGE=ibmc-block-gold
+``` 
+```bash
+export IBM_ENTITLEMENT_KEY=<your entitlement key>
+```
+[Your Entitlement Key](https://myibm.ibm.com/products-services/containerlibrar)
+
+- Create IBM Entitlment Key secret in `db2`, `kube-system` & `cp4ba` namespaces 
     ```bash
-    export IBM_ENTITLEMENT_KEY=[Access your container sofware Entitlement key](https://myibm.ibm.com/products-services/containerlibrary)
-    ```
-    ```bash
-    oc create secret docker-registry ibm-entitlement-key -n db2 \
+    oc create secret docker-registry ibm-entitlement-key -n <NAMESPACE> \
     --docker-server=cp.icr.io \
     --docker-username=cp \
     --docker-password=$IBM_ENTITLEMENT_KEY 
