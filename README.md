@@ -48,7 +48,7 @@
     - Add the IBM entitlment key to namespace `kube-system`
 
     ```bash
-        oc create secret docker-registry cpregistrysecret -n kube-system \
+    oc create secret docker-registry cpregistrysecret -n kube-system \
     --docker-server=cp.icr.io/cp/cpd \
     --docker-username=cp \
     --docker-password=$IBM_ENTITLEMENT_KEY 
