@@ -39,8 +39,17 @@
     ```
 1. Create IBM Entitlment Key secret in `db2`, `kube-system` & `cp4ba` namespaces 
     ```bash
-    oc create secret docker-registry ibm-entitlement-key -n <NAMESPACE> \
+    oc create secret docker-registry ibm-entitlement-key -n db2 \
     --docker-server=cp.icr.io \
+    --docker-username=cp \
+    --docker-password=$IBM_ENTITLEMENT_KEY 
+
+    ```
+    - Add the IBM entitlment key to namespace `kube-system`
+
+    ```bash
+        oc create secret docker-registry cpregistrysecret -n kube-system \
+    --docker-server=cp.icr.io/cp/cpd \
     --docker-username=cp \
     --docker-password=$IBM_ENTITLEMENT_KEY 
 
@@ -104,15 +113,17 @@
 ### Install LDAP
 
 
-- Add the IBM entitlment key to namespace `kube-system`
-
-    ```bash
-        oc create secret docker-registry cpregistrysecret -n kube-system \
-    --docker-server=cp.icr.io/cp/cpd \
-    --docker-username=cp \
-    --docker-password=$IBM_ENTITLEMENT_KEY 
-
+1. Edit the Services layer `${GITOPS_PROFILE}/2-services/kustomization.yaml` uncomment the following:
+    ```yaml
+    - argocd/instances/openldap.yaml
     ```
+1. The following will provide Ldap url:
+    ```bash
+    oc get route -n openldap | grep openldap-admin | awk '{print "https://"$2}'
+    ```
+
+
+
 - Deploy Demonset `notrootsquash.yaml`
 - Deploy the actual db `db2ucluster-instance.yaml` this should take around 15 min
     > Note!
