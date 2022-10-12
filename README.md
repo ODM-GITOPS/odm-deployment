@@ -92,6 +92,10 @@
     ```bash
     cloudctl case launch --case ${CASE_NAME} --namespace openshift-marketplace --inventory db2uOperatorSetup --action installCatalog --tolerance 1
     ```
+- Install the Operator:
+    ```bash
+    cloudctl case launch --case ${CASE_NAME} --namespace db2 --inventory db2uOperatorSetup --action installOperatorNative --tolerance 1
+    ```
 ### Services - Kustomization.yaml
 
 1. Edit the Services layer `${GITOPS_PROFILE}/2-services/kustomization.yaml` uncomment the following:
