@@ -155,7 +155,7 @@
 
 ### Deploy CP4A:
     ```bash
-        oc create secret docker-registry cpregistrysecret -n cp4ba \
+    oc create secret docker-registry cpregistrysecret -n cp4ba \
     --docker-server=cp.icr.io/cp/cpd \
     --docker-username=cp \
     --docker-password=$IBM_ENTITLEMENT_KEY 
@@ -179,7 +179,7 @@
     ```
 ### Post Deployment Steps:
 - When the cloud pak is successfully installed you should be able to login as the default admin user. In this case, the default admin user is admin and the password can be found in the ibm-iam-bindinfo-platform-auth-idp-credentials secret in the cp4ba namespace. The URLs can be found in the icp4adploy-cp4ba-access-info configmap in the cp4ba namespace. Look for the section called odm-access-info
-### Add user permissions¶
+### Add user permissions
 - You will need to grant your users various access roles, depending on their needs. You manage permissions using the Administration -> Access control page in the Cloud pak dashboard.
 
 - Click on the hamburger menu on the top left corner of the dashboard; expand the Administration section and click on Access control.
