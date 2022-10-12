@@ -127,7 +127,7 @@
 
 > Note! You can find the password for your instance in the `c-db2ucluster-cp4ba-instancepassword` secret in the `tools` namespace. You provided the password in the custom resource you used to create the instance, but it's easier to find it in this secret than it is to go and find the custom resource.
 
-### Install LDAP
+### Deploy LDAP
 
 
 1. Edit the Services layer `${GITOPS_PROFILE}/2-services/kustomization.yaml` uncomment the following:
@@ -153,23 +153,51 @@
 - Apply CRB `openldap-anyuid.yaml`
 - we need to script the helm / k8's job for `helm`. 
 
-### CP4A:
+### Deploy CP4A:
     ```bash
         oc create secret docker-registry cpregistrysecret -n cp4ba \
     --docker-server=cp.icr.io/cp/cpd \
     --docker-username=cp \
     --docker-password=$IBM_ENTITLEMENT_KEY 
-
     ```
-- catalog_source
-- ibm-common-services "ibm-catalogs"
-- operator group
-- common-services-operator-group
-- sub
-- ldap
-### odms:
-- ibm-ban-secret
-- odm-db-secret
-- oc get secret -n cp4ba --sort-by='.metadata.creationTimestamp'
-- on icp4adeploy spec change the version to 21.0.1
-- icp4adeploy instance
+1. Edit the Services layer `${GITOPS_PROFILE}/2-services/kustomization.yaml` uncomment the following:
+    ```yaml
+    - argocd/operators/ibm-cp4a-operator.yaml   
+    ```
+### Deploy ODM:
+1. Edit the Services layer `${GITOPS_PROFILE}/2-services/kustomization.yaml` uncomment the following:
+    ```yaml
+    - argocd/instances/ibm-cp4ba-odm.yaml
+    ```
+- Validate the secrets:
+    ```bash
+    oc get secret -n cp4ba --sort-by='.metadata.creationTimestamp'
+    ```
+- Verify the sataus:
+    ```bash
+    oc get icp4acluster icp4adeploy -n cp4ba -o jsonpath="{.status}{'\n'}" | jq
+    ```
+### Post Deployment Steps:
+- When the cloud pak is successfully installed you should be able to login as the default admin user. In this case, the default admin user is admin and the password can be found in the ibm-iam-bindinfo-platform-auth-idp-credentials secret in the cp4ba namespace. The URLs can be found in the icp4adploy-cp4ba-access-info configmap in the cp4ba namespace. Look for the section called odm-access-info
+### Add user permissions¶
+- You will need to grant your users various access roles, depending on their needs. You manage permissions using the Administration -> Access control page in the Cloud pak dashboard.
+
+- Click on the hamburger menu on the top left corner of the dashboard; expand the Administration section and click on Access control.
+
+- Click on the User Groups tab, then click on New user group.
+
+- Name the group odmadmins, and click Next.
+
+- Click Identity provider groups, then type cpadmins in the search field. It should come back with one result: cn=cpadmins,ou=Groups,dc=cp. Select it and click Next. Click all of the roles:
+
+- Administrator
+- Automation Administrator
+- Automation Analyst
+- Automation Developer
+- Automation Operator
+- ODM Administrator
+- ODM Business User
+- ODM Runtime administrator
+- ODM Runtime user
+- User
+- Click Next, then click Create.
