@@ -20,6 +20,7 @@
         - argocd/namespace-db2.yaml
         - argocd/namespace-cp4ba.yaml
         - argocd/namespace-kube-system.yaml
+        - argocd/namespace-openldap.yaml
         - argocd/serviceaccounts-ibm-common-services.yaml
         - argocd/serviceaccounts-tools.yaml
         - argocd/serviceaccounts-db2.yaml
@@ -90,8 +91,19 @@
 - SCC for db2 `db2-scc.yaml`
 - Validate by running this command:
     ```bash
-    oc get db2ucluster db2ucluster-cp4ba -n db2
+    oc get db2ucluster db2ucluster-cp4ba -n tools
     ```
+    or you can use the `watch` command to run the command every 2 secounds:
+    ```bash
+    watch "oc get db2ucluster -n tools"
+    ```
+- When the state field says Ready your instance is ready for use. [The Cloud Pak for Data documentation](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=db2-administering) has some handy information on `Administering Db2` should you need create users, tables, and other such stuff, like you will for Cloud Pak for Business Automation.
+
+> Note! You can find the password for your instance in the `c-db2ucluster-cp4ba-instancepassword` secret in the `tools` namespace. You provided the password in the custom resource you used to create the instance, but it's easier to find it in this secret than it is to go and find the custom resource.
+
+### Install LDAP
+
+
 - Add the IBM entitlment key to namespace `kube-system`
 
     ```bash
