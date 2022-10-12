@@ -54,6 +54,19 @@
     --docker-password=$IBM_ENTITLEMENT_KEY 
 
     ```
+    ```bash
+    oc create secret docker-registry ibm-entitlement-key -n cp4ba \
+    --docker-server=cp.icr.io \
+    --docker-username=cp \
+    --docker-password=$IBM_ENTITLEMENT_KEY 
+
+    ```
+    ```bash
+    oc create secret docker-registry ibm-entitlement-key -n ibm-common-services \
+    --docker-server=cp.icr.io \
+    --docker-username=cp \
+    --docker-password=${IBM_ENTITLEMENT_KEY} 
+    ```
 1. Create the catalog source
 - You will need to get the value for `CASE_VERSION` by looking up the [CASE version of latest Db2 Operator](https://www.ibm.com/docs/en/db2/11.5?topic=deployments-db2-red-hat-openshift#concept_bq1_v4r_hlb__case-version).
     ```bash
